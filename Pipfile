@@ -9,6 +9,7 @@ flask = "*"
 flask-wtf = "*"
 flask-sqlalchemy = "*"
 datetime = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

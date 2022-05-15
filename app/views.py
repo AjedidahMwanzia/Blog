@@ -1,5 +1,5 @@
 from flask import Flask,render_template,flash
-from app import app
+from . import app
 from .models import Users
 
 from .form import NameForm,UserForm

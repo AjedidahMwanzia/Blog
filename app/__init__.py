@@ -4,12 +4,16 @@ from datetime import datetime
 from config import config_options
 
 
-app=Flask(__name__)
+db =SQLAlchemy()
+def create_app(config_name):
+    app=Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['SECRET_KEY']= 'secret'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://moringa:jay@localhost/blog'
+    app.config['SECRET_KEY']= 'secret'
 
-db =SQLAlchemy(app)
+ 
 
-# db.init_app(app)
-from . import views,form
+    db.init_app(app)
+    from . import views,form
+
+    return app
