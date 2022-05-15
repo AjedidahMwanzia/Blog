@@ -1,19 +1,18 @@
 from flask import Flask,render_template,flash
-from . import main
-from .models import Users
+from app.models import Users
 from .form import NameForm,UserForm
-from . import db
+from .. import db
+from . import main
 
-
-@app.route('/')
+@main.route('/')
 def index():
     return render_template ('index.html')
 
-@app.route('/user/<name>')
+@main.route('/user/<name>')
 def user(name):
     return  render_template ('user.html', name = name)
 
-@app.route('/name',methods = ['GET','POST'])
+@main.route('/name',methods = ['GET','POST'])
 def name():
     name= None
     form = NameForm()
@@ -24,7 +23,7 @@ def name():
 
     return render_template('name.html', name = name , form = form)
 
-@app.route('/user/add',methods = ['GET','POST'],)
+@main.route('/user/add',methods = ['GET','POST'],)
 def add_user():
     name= None
     form = UserForm()
@@ -41,3 +40,7 @@ def add_user():
     our_users=Users.query.order_by(Users.date_added)
 
     return render_template('add_user.html',form=form,name=name,our_users=our_users)
+
+
+
+   

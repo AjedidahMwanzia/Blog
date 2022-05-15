@@ -1,17 +1,12 @@
 
 from app.models import Users
-from app import db,create_app
-from  flask_migrate import Migrate, MigrateCommand
-
-app = create_app('development')
-
-migrate = Migrate(app,db)
-manager.add_command('db',MigrateCommand)
+from app import db
 
 
-@manager.shell
-def make_shell_context():
-    return dict(app = app,db = db,User = User )
+app.config['SECRET_KEY']= 'secret'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+
+
 
     
 if __name__ == '__main__':
