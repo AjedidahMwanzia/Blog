@@ -19,6 +19,8 @@ cryptography = "*"
 flask-bootstrap = "*"
 flask-login = "*"
 email-validator = "*"
+flask-mail = "*"
+image = "*"
 
 [dev-packages]
 

@@ -58,7 +58,7 @@ class Blog(db.Model):
     content = db.Column(db.Text(), nullable = False)
     comment = db.relationship('Comment',backref='pitch',lazy='dynamic')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    time = db.Column(db.DateTime, default = datetime.utcnow)
+    posted = db.Column(db.DateTime, default = datetime.utcnow)
     
     
     def save(self):
