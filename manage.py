@@ -1,18 +1,28 @@
+from app import create_app,db
+from flask_script import Manager,Server
+from app import models
+from flask_migrate import Migrate, MigrateCommand
+# Creating app instance
+app = create_app('production')
+app.config['SECRET_KEY'] = 'asldfkawo'
 
-from app.models import Users
-from app import db
+manager = Manager(app)
+migrate = Migrate(app,db)
 
+manager.add_command('server',Server)
+manager.add_command('db',MigrateCommand)
 
-app.config['SECRET_KEY']= 'secret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+@manager.command
+def test():
+    """Run the unit tests."""
+    import unittest
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner(verbosity=2).run(testsg)
 
+@manager.shell
+def make_shell_context():
+    return dict(app = app,db = db,User = User, Role = Role, )
 
-
-    
 if __name__ == '__main__':
+    app.config['SECRET_KEY'] = 'asldfkawo'
     manager.run()
-
-
-
-
-
