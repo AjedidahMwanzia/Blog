@@ -14,12 +14,11 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
-    profile_pic_path = db.Column(db.String())
+    profile_pic_path = db.Column(db.String(150),default ='default.png')
     pass_secure = db.Column(db.String(255))
-    pitches = db.relationship('Pitch', backref='user', lazy='dynamic')
+    blog = db.relationship('Blog', backref='user', lazy='dynamic')
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
-    upvote = db.relationship('Upvote',backref='user',lazy='dynamic')
-    downvote = db.relationship('Downvote',backref='user',lazy='dynamic')
+    
     
     
     @property
@@ -52,25 +51,31 @@ class Role(db.Model):
         return f'User {self.name}'
 
 
-class Pitch(db.Model):
+class Blog(db.Model):
     __tablename__ = 'pitches'
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(255),nullable = False)
-    post = db.Column(db.Text(), nullable = False)
+    content = db.Column(db.Text(), nullable = False)
     comment = db.relationship('Comment',backref='pitch',lazy='dynamic')
-    upvote = db.relationship('Upvote',backref='pitch',lazy='dynamic')
-    downvote = db.relationship('Downvote',backref='pitch',lazy='dynamic')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     time = db.Column(db.DateTime, default = datetime.utcnow)
-    category = db.Column(db.String(255), index = True,nullable = False)
     
-    def save_p(self):
+    
+   def save(self):
         db.session.add(self)
         db.session.commit()
 
-        
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def get_blog(id):
+        blog = Blog.query.filter_by(id=id).first()
+
+        return blog
+
     def __repr__(self):
-        return f'Pitch {self.post}'
+        return f'Blog {self.title}'
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -79,58 +84,30 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'),nullable = False)
 
-    def save_c(self):
+      def save(self):
         db.session.add(self)
         db.session.commit()
 
-    @classmethod
-    def get_comments(cls,pitch_id):
-        comments = Comment.query.filter_by(pitch_id=pitch_id).all()
+    def delete(self):
+        db.session.remove(self)
+        db.session.commit()
 
-        return comments
+    def get_comment(id):
+        comment = Comment.query.all(id=id)
+        return comment
 
-    
+
     def __repr__(self):
-        return f'comment:{self.comment}'
+        return f'Comment {self.comment}'
+class Subscriber(db.Model):
+    __tablename__='subscribers'
 
-class Upvote(db.Model):
-    __tablename__ = 'upvotes'
+    id=db.Column(db.Integer,primary_key=True)
+    email = db.Column(db.String(255),unique=True,index=True)
 
-    id = db.Column(db.Integer,primary_key=True)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
-    
-
-    def save(self):
+    def save_subscriber(self):
         db.session.add(self)
         db.session.commit()
 
-    @classmethod
-    def get_upvotes(cls,id):
-        upvote = Upvote.query.filter_by(pitch_id=id).all()
-        return upvote
-
-
     def __repr__(self):
-        return f'{self.user_id}:{self.pitch_id}'
-class Downvote(db.Model):
-    __tablename__ = 'downvotes'
-
-    id = db.Column(db.Integer,primary_key=True)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
-    
-
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-    @classmethod
-    def get_downvotes(cls,id):
-        downvote = Downvote.query.filter_by(pitch_id=id).all()
-        return downvote
-
-    def __repr__(self):
-        return f'{self.user_id}:{self.pitch_id}'
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(user_id)
+        return f'Subscriber {self.email}'

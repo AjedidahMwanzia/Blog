@@ -6,6 +6,7 @@ from flask_migrate import Migrate, MigrateCommand
 app = create_app('production')
 app.config['SECRET_KEY'] = 'asldfkawo'
 
+app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql+psycopg2://moringa:jay@localhost/blog'
 manager = Manager(app)
 migrate = Migrate(app,db)
 
