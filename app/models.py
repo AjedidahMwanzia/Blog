@@ -61,7 +61,7 @@ class Blog(db.Model):
     time = db.Column(db.DateTime, default = datetime.utcnow)
     
     
-   def save(self):
+    def save(self):
         db.session.add(self)
         db.session.commit()
 
@@ -84,7 +84,7 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'),nullable = False)
 
-      def save(self):
+    def save(self):
         db.session.add(self)
         db.session.commit()
 
