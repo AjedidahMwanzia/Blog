@@ -17,12 +17,26 @@ body{
     padding-top: 1vw;
     
 }
+#image1 img{
+    border-radius: 50vw;
+    width: 20vw;
+    height: 20vw;
+    margin-right: 5vw;
+    margin-left: -5vw;
+    
+}
+#image2{
+    width: 50vw;
+    margin-left: 15vw;
+    margin-top: 2vw;
+}
+#image4{
+    text-align: center;
+    margin-top: 6vw;
+    margin-left: 15vw;
+}
 
     
-
-.test{
-    background-image: url("../photos/pic.png");
-}
 #test1{
     border-radius: 50vw;
     width: 20vw;
@@ -37,7 +51,6 @@ body{
 }
 #test3{
     width: 150%;
-    /* box-shadow: 5px 10px #e2e2e2; */
     margin-top: 10vw;
     padding-top: 3vw;
     padding-bottom: 2vw;

@@ -6,12 +6,12 @@
         <div class="row">
             
             <div class="col-md-12 singleblog">
-                <hr>
+              
                 <div class="row">
-                    <div class="col-md-1">
+                    <div class="col-md-1" id="image1">
                         <img class="rounded-circle blog-img" src="{{ url_for('static', filename='photos/' + blog.user.profile_pic_path) }}">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8" id="image2">
                         {% for message in get_flashed_messages() %}
                         <div class="alert alert-success">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -29,14 +29,14 @@
                         {% endif %}
                         </div>
                     </div>
-                    <div class="col-md-3 ">
-                        <h4>All Comments</h4>
+                    <div class="col-md-3 " id="image4">
+                        <h4 style="font-size: 1.2vw;font-weight:600">All Comments</h4>
                         {% for comment in comments %}
-                            <p class="mt-10"><span style="font-weight: bold">{{comment.user.username}} : </span> {{comment.comment}}</p>
+                            <p class="mt-10" style="background-color:#e2e2e2 ; color:black; padding:0.4vw;"><span style="font-weight: bold">{{comment.user.username}} : </span> {{comment.comment}}</p>
                         {% endfor %}
                     </div>
                 </div>  
-                <hr>      
+                   
             </div>
             <div class="col-md-1"></div>
         </div>
