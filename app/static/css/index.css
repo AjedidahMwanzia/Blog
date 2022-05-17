@@ -1,12 +1,40 @@
-/* .background{
+.navbar{
+    background-color: white;
+    padding: 0.5vw;
+}
+
+body{
+    background-color: #080710;
+    color: white;
+}
+.navbar-brand{
+    font-size: 2vw;
+   
+}
+.nav-link a{
+    list-style: none;
+    padding-right: 2vw;
+    padding-top: 1vw;
+    
+}
+.test{
+    background-image: url("../photos/pic.png");
+}
+#test1{
+    border-radius: 1vw;
+    width: 40%;
+    height: 50%;
+}
+/* 
+.background{
     width: 43vw;
     height: 52vw;
     position: absolute;
     transform: translate(-50%,-50%);
     left: 50%;
     top: 50%;
-    margin-top: 3vw;
-}
+    margin-top: 3vw; */
+/* }
 .background .shape{
     height: 10vw;
     width: 10vw;
