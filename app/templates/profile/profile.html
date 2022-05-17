@@ -23,7 +23,7 @@
       <img src="{{profile_pic_path}}" class="rounded-circle account-img mt-2" alt="woman avatar">
     </div>
     <div class="card-body">
-      <h4 class="card-title text-center">{{current_user.username|title}}</h4>
+      <h4 style="text-align:center ;" class="card-title text-center">{{current_user.username|title}}</h4>
       <hr>
       <p> {{current_user.email}} </p>
       <p><i class="fas fa-quote-left"></i> {{current_user.bio}} <i class="fas fa-quote-right"></i> </p>
@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="col-md-6">
-      <div class="container mt-4" >
+      <div class="container mt-4"style="width: 40vw;margin-top:1vw;" >
         <div id="profileupdate">
           <h2>Update Your Profile Here</h2>
             {{wtf.quick_form(form)}}
