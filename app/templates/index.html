@@ -14,22 +14,22 @@
         <div class="row">
             <div class="col-md-8 ">
                 {% for blog in blogs.items %}
-                    <div class="container bg mb-2">
-                        <hr>
+                    <div id="test3" class="container  bg mb-2">
+                       
                         <div class="row ">
-                            <div class="col-md-2 " id=" test1">
-                                    <img class="rounded-circle blog-img mr-10" src="{{ url_for('static', filename='photos/' + blog.user.profile_pic_path) }}">
+                            <div class="col-md-2 ">
+                                    <img id="test1" class="rounded-circle blog-img mr-10" src="{{ url_for('static', filename='photos/' + blog.user.profile_pic_path) }}">
                                     <p id="usern"><a href="{{url_for('main.user_posts',username = blog.user.username)}}"><span  style="color: blue"><strong>{{blog.user.username | title}}</strong></span> </a> </p> 
                             </div>
-                            <div class="col-md-10 pr-4 d-justify userblog">
+                            <div id="test2" class="col-md-10 pr-4 d-justify userblog">
                                 <p>Posted on : {{blog.posted.strftime('%d-%m-%Y')}}</p>
-                                <h4><a href="{{url_for('main.blog',id = blog.id)}}">{{blog.title | upper}}</a></h4>
+                                <h4><a style="color:#5bc0de ;font-weight: 500;" href="{{url_for('main.blog',id = blog.id)}}">{{blog.title | upper}}</a></h4>
                                 <p>{{blog.content}}</p>
                                 <p> <a class="btn btn-sm btn-info" href="{{url_for('main.blog',id = blog.id)}}" > Comment</a> {{blog.comment.count()}} Comments</p>
                                 
                             </div>
                         </div> 
-                        <hr>
+                      
                     </div>
                        
                 {% endfor %}
