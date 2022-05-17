@@ -15,6 +15,7 @@ body{
     list-style: none;
     padding-right: 2vw;
     padding-top: 1vw;
+    color:black;
     
 }
 #image1 img{
@@ -35,7 +36,15 @@ body{
     margin-top: 6vw;
     margin-left: 15vw;
 }
-
+#test7{
+    border-radius: 50vw;
+    width: 20vw;
+    height: 20vw;
+    margin-right: 5vw;
+    margin-left: -2vw;
+    margin-bottom: 1vw;
+    margin-top: 2vw;
+}
     
 #test1{
     border-radius: 50vw;

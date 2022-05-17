@@ -3,7 +3,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" style="padding-top: 1vw;">
-                  <a class="nav-link"style="color:#5bc0de ;" href="{{url_for('main.index')}}">All Blogs</a>
+                  <a class="nav-link"style="color: black;font-weight: 600;" href="{{url_for('main.index')}}">All Blogs</a>
                 </li>
 
             </ul>
@@ -11,19 +11,19 @@
             {% if current_user.is_authenticated %}
 
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" style= 'margin-right:30px ;color:#5bc0de ;padding-top: 3vw; list-style-type: none;' data-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" style= 'margin-right:30px ;color:black ; font-weight: 600;padding-top: 3vw; list-style-type: none;' data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
             &nbsp;<strong>{{current_user.username}}</strong> </a>
            
-              <a class="dropdown-item"style= 'margin-right:30px ;color:#5bc0de ;padding-top: 3vw; list-style-type: none;' href="{{url_for('main.profile',name=current_user.username)}}">&nbsp; My account</a>
-              <a class="dropdown-item"style= 'margin-right:30px ;color:#5bc0de ;padding-top: 3vw; list-style-type: none;' href="{{url_for('auth.logout')}}">&nbsp; Log out</a>
+              <a class="dropdown-item"style= 'margin-right:30px ;color:black;padding-top: 3vw;font-weight: 600; list-style-type: none;' href="{{url_for('main.profile',name=current_user.username)}}">&nbsp; My account</a>
+              <a class="dropdown-item"style= 'margin-right:30px ;color:black;padding-top: 3vw; font-weight: 600;list-style-type: none;' href="{{url_for('auth.logout')}}">&nbsp; Log out</a>
 
             </li>
             {% else %}
-              <li class="nav-item" style="padding-top: 1vw;margin-right: 1vw;font-size:1vw;">
+              <li class="nav-item" style="padding-top: 1vw;margin-right: 1vw;font-size:1vw;color: black;font-weight: 600;">
                   <a  class="nav-link mr-1" href="{{url_for('auth.login')}}">&nbsp; <strong>Sign Up</strong></a>
               </li>
-              <li class="nav-item"style="padding-top: 1vw;">
+              <li class="nav-item"style="padding-top: 1vw; color:black;">
                   <a  class="nav-link mr-5" href="{{url_for('auth.login')}}" >&nbsp; <strong>Log In</strong></a>
               </li>
             {%endif%}
