@@ -82,7 +82,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.Text(),nullable = False)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'),nullable = False)
+    blog_id = db.Column(db.Integer,db.ForeignKey('pitches.id'),nullable = False)
 
     def save(self):
         db.session.add(self)
@@ -92,8 +92,8 @@ class Comment(db.Model):
         db.session.remove(self)
         db.session.commit()
 
-    def get_comment(id):
-        comment = Comment.query.all(id=id)
+    def get_blog(id):
+        comment = Comment.query.all(blog_id=id)
         return comment
 
 
