@@ -7,13 +7,11 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class ProdConfig(Config):
-
-
-    DEBUG = True
-
-class DevConfig(Config):
     pass
 
+class DevConfig(Config):
+
+    DEBUG = True
 
 config_options = {
 'development':DevConfig,
