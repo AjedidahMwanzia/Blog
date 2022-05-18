@@ -1,5 +1,5 @@
 import os
-
+#config file
 class Config:
 
     SECRET_KEY = os.environ.get('SECRET_KEY')
