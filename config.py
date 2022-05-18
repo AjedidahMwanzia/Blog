@@ -9,7 +9,7 @@ class Config:
 class ProdConfig(Config):
 
 
-DEBUG = True
+    DEBUG = True
 
 class DevConfig(Config):
     pass
